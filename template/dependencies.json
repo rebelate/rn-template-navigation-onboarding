@@ -1,0 +1,13 @@
+{
+    "@react-native-async-storage/async-storage": "^1.15.5",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-screens": "^3.3.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "@react-native-community/masked-view": "^0.1.11",
+    "react-native-onboarding-swiper": "^1.1.4",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0"
+}

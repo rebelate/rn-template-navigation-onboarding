@@ -1,0 +1,47 @@
+import * as React from 'react';
+import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Intro from './Screens/Onboarding';
+import {default as storage} from '@react-native-async-storage/async-storage';
+import {Easing} from 'react-native-reanimated';
+
+const Stack = createStackNavigator();
+function App() {
+  const [config, setConfig] = React.useState('');
+  const [isLoading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    storage.getItem('firstConf').then((val: any) => {
+      setConfig(val);
+      setLoading(false);
+    });
+  });
+
+  if (isLoading) {
+    return <View></View>;
+  }
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {config != 'true' && (
+          <Stack.Screen
+            options={{headerLeft: () => null}}
+            name="Onboarding"
+            component={Intro}
+          />
+        )}
+        <Stack.Screen name="Main" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>HOME</Text>
+    </View>
+  );
+}
+export default App;
